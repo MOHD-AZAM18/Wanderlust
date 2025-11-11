@@ -22,7 +22,9 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 const bookingRoutes = require("./routes/bookingRoutes");
 
-const dbUrl = process.env.ATLASDB_URL;
+// const dbUrl = process.env.ATLASDB_URL;
+
+const dbUrl = process.env.MONGO_URI;
 
 
 main()
@@ -71,9 +73,13 @@ const sessionOptions = {
 };
 
 
-// app.get("/",(req,res) => {
-//   res.send("hey i am root");
-//  });
+app.get("/",(req,res) => {
+  res.send("hey i am root");
+ });
+
+ app.get("/" , (res,req) => {
+  res.send("Server is Working");
+ })
 
 
 app.use(session(sessionOptions));

@@ -93,6 +93,14 @@
        <% } %> 
     </div>
 
+
+  <% if (currUser) { %>
+<a href="/bookings/<%= listing._id %>/new" class="btn btn-success mt-3">Book Now</a>
+<% } else { %>
+  <a href="/login" class="btn btn-secondary mt-3 d-flex justify-content-center my-3 w-20">Login to Book</a>
+<% } %>
+
+
     <!-- <div class="col-8 offset-3  mb-3">
       <h3>Where you'll be</h3>
       <div id="map"></div>

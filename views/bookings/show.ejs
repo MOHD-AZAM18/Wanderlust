@@ -1,0 +1,110 @@
+<!-- 
+
+
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5 mb-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-body">
+      <h2 class="card-title mb-4 text-primary text-center">
+        Booking Details
+      </h2>
+
+      <h4 class="text-center mb-4"><%= booking.listing.title %></h4>
+
+      <ul class="list-group mb-4">
+        <li class="list-group-item">
+          <strong>Check-in:</strong>
+          <%= booking.dateFrom ? new Date(booking.dateFrom).toDateString() : "N/A" %>
+        </li>
+        <li class="list-group-item">
+          <strong>Check-out:</strong>
+          <%= booking.dateTo ? new Date(booking.dateTo).toDateString() : "N/A" %>
+        </li>
+        <li class="list-group-item">
+          <strong>Guests:</strong> <%= booking.guests %>
+        </li>
+        <li class="list-group-item">
+          <strong>Total Price:</strong> ₹<%= booking.totalPrice %>
+        </li>
+        <li class="list-group-item">
+          <strong>Status:</strong>
+          <span class="<%= booking.status === 'cancelled' ? 'text-danger' : 'text-success' %>">
+            <%= booking.status %>
+          </span>
+        </li>
+      </ul>
+
+      <% if (booking.status !== "cancelled") { %>
+        <form action="/bookings/cancel/<%= booking._id %>" method="POST">
+          <button class="btn btn-danger w-100 mb-3">Cancel Booking</button>
+        </form>
+      <% } else { %>
+        <div class="alert alert-warning text-center">
+          This booking has been cancelled.
+        </div>
+      <% } %>
+
+      <div class="text-center">
+        <a href="/bookings" class="btn btn-secondary">Back to My Bookings</a>
+      </div>
+    </div>
+  </div>
+</div> -->
+ 
+
+
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5 mb-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-body">
+      <h2 class="card-title mb-4 text-primary text-center">
+        Booking Details
+      </h2>
+
+      <h4 class="text-center mb-4"><%= booking.listing.title %></h4>
+
+      <ul class="list-group mb-4">
+        <li class="list-group-item">
+          <strong>Check-in:</strong>
+          <%= booking.checkIn ? new Date(booking.checkIn).toDateString() : "N/A" %>
+        </li>
+        <li class="list-group-item">
+          <strong>Check-out:</strong>
+          <%= booking.checkOut ? new Date(booking.checkOut).toDateString() : "N/A" %>
+        </li>
+        <li class="list-group-item">
+          <strong>Guests:</strong> <%= booking.guests %>
+        </li>
+        <li class="list-group-item">
+          <strong>Total Price:</strong> ₹<%= booking.totalPrice %>
+        </li>
+        <li class="list-group-item">
+          <strong>Status:</strong>
+          <span class="<%= booking.status === 'cancelled' ? 'text-danger' : 'text-success' %>">
+            <%= booking.status %>
+          </span>
+        </li>
+      </ul>
+
+      <% if (booking.status !== "cancelled") { %>
+        <form action="/bookings/<%= booking._id %>/cancel" method="POST">
+          <button class="btn btn-danger w-100 mb-3">Cancel Booking</button>
+        </form>
+      <% } else { %>
+        <div class="alert alert-warning text-center">
+          This booking has been cancelled.
+        </div>
+      <% } %>
+
+      <div class="text-center">
+        <a href="/bookings" class="btn btn-secondary">Back to My Bookings</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
